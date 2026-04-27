@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>s&box Launch Countdown</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        :root {
+            --accent: #00ff9d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a0033 100%);
+            color: #fff;
+            font-family: 'Press Start 2P', system-ui;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        header {
+            margin-bottom: 3rem;
+        }
+        
+        h1 {
+            font-size: 4.5rem;
+            color: var(--accent);
+            text-shadow: 0 0 20px #00ff9d,
+                        0 0 40px #00ff9d;
+            margin-bottom: 0.5rem;
+            letter-spacing: 4px;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+        }
+        
+        .countdown {
+            background: rgba(0, 0, 0, 0.6);
+            border: 4px solid var(--accent);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 0 40px rgba(0, 255, 157, 0.3);
+        }
+        
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .time-unit {
+            background: #111;
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            transition: transform 0.2s ease;
+        }
+        
+        .time-unit:hover {
+            transform: scale(1.05);
+        }
+        
+        .time-value {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-shadow: 0 0 15px #00ff9d;
+            min-height: 80px;
+        }
+        
+        .time-label {
+            font-size: 1rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 4rem 0;
+        }
+        
+        .image-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .image-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 157, 0.2);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .footer {
+            margin-top: 5rem;
+            padding: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #00ff9d; }
+            to { text-shadow: 0 0 40px #00ff9d, 0 0 60px #00ff9d; }
+        }
+        
+        .launch-text {
+            font-size: 1.8rem;
+            margin: 2rem 0;
+            color: #ff00aa;
+            text-shadow: 0 0 20px #ff00aa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="glow">s&amp;box</h1>
+            <p class="subtitle">THE NEXT GENERATION OF GAME DEVELOPMENT IS COMING</p>
+            <div class="launch-text">LAUNCHING SOON</div>
+        </header>
+
+        <div class="countdown">
+            <h2 style="margin-bottom: 1.5rem; color: #fff;">TIME UNTIL RELEASE</h2>
+            
+            <div class="countdown-grid" id="countdown-grid">
+                <div class="time-unit">
+                    <div class="time-value" id="days">00</div>
+                    <div class="time-label">DAYS</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="hours">00</div>
+                    <div class="time-label">HOURS</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="minutes">00</div>
+                    <div class="time-label">MINUTES</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="seconds">00</div>
+                    <div class="time-label">SECONDS</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="images">
+            <div class="image-card">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FHYvkWED2iaM%2Fmaxresdefault.jpg&f=1&ipt=3885f87a612c0fa24df5720d1467c6940d59212c89c04245739b42954345504e" alt="s&box Gameplay">
+            </div>
+            <div class="image-card">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F5NqVVmKpm64%2Fmaxresdefault.jpg&f=1&ipt=6e320235a7a82c71b2515282b881ef47df79c19ac4aadb54a85a4fd5bd338197" alt="s&box Trailer">
+            </div>
+            <div class="image-card">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpatchwiki.biligame.com%2Fimages%2Fsbox%2F5%2F5a%2Fofq8qvhqkih9hmeon7bwozf2jqlp9d2.jpg&f=1&ipt=86966acc712deac6230c519d6906c916e6882f61ff1155fecc37c7f7c530ce8a" alt="s&box Character">
+            </div>
+            <div class="image-card">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdeveloper.valvesoftware.com%2Fw%2Fimages%2Fthumb%2Ff%2Fff%2FS%2526box_-Screenshot_1.jpg%2F1104px-S%2526box-_Screenshot_1.jpg&f=1&ipt=d6172f377fd8c28161460cbaee57b8423c07708c2203f6c01ca03d162b50f253" alt="s&box Screenshot">
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Countdown to Unix timestamp 1777330800 • April 28, 2026</p>
+            <p>Made with excitement for the Facepunch s&amp;box release</p>
+        </footer>
+    </div>
+
+    <script>
+        // Target timestamp (Unix timestamp in seconds)
+        const TARGET_TIMESTAMP = 1777330800;
+        
+        function updateCountdown() {
+            const now = Math.floor(Date.now() / 1000);
+            let diff = TARGET_TIMESTAMP - now;
+            
+            // If the date has passed, show 00s
+            if (diff < 0) {
+                diff = 0;
+            }
+            
+            const days = Math.floor(diff / (60 * 60 * 24));
+            diff -= days * (60 * 60 * 24);
+            
+            const hours = Math.floor(diff / (60 * 60));
+            diff -= hours * (60 * 60);
+            
+            const minutes = Math.floor(diff / 60);
+            diff -= minutes * 60;
+            
+            const seconds = diff;
+            
+            // Update DOM with zero padding
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        
+        // Update immediately and every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Add a little retro scanline effect for fun
+        const style = document.createElement('style');
+        style.innerHTML = `
+            body::after {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: repeating-linear-gradient(
+                    transparent 0px,
+                    transparent 2px,
+                    rgba(255,255,255,0.03) 2px,
+                    rgba(255,255,255,0.03) 4px
+                );
+                pointer-events: none;
+                z-index: 9999;
+                animation: scan 8s linear infinite;
+            }
+            
+            @keyframes scan {
+                0% { transform: translateY(-100%); }
+                100% { transform: translateY(100%); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
